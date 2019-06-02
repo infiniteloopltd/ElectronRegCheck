@@ -1,3 +1,16 @@
-// This file is required by the index.html file and will
-// be executed in the renderer process for that window.
-// All of the Node.js APIs are available in this process.
+var api = require('car-registration-api-uk');
+window.$ = window.jQuery = require('jquery');
+
+$(init);
+function init()
+{
+   $("#btnSearch").bind("click",btnSearch_click);
+}
+
+function btnSearch_click()
+{
+   var reg = $("#reg").val();
+   api.CheckCarRegistrationUK(reg,"*** your username here ***",function(data){
+      $("#output").html(data.Description);
+   });
+}
